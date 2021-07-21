@@ -38,14 +38,15 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Driver Assistance')),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: _allPages.length,
-        itemBuilder: (_, int index) => ListTile(
-          title: Text(_titles[index]),
-          onTap: () => _pushPage(context, _allPages[index], _titles[index]),
-        ),
-      ),
+      // body: ListView.builder(
+      //   shrinkWrap: true,
+      //   itemCount: _allPages.length,
+      //   itemBuilder: (_, int index) => ListTile(
+      //     title: Text(_titles[index]),
+      //     onTap: () => _pushPage(context, _allPages[index], _titles[index]),
+      //   ),
+      // ),
+      body: MapView(),
     );
   }
 }

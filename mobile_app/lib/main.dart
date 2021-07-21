@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Future<bool> firstInfo() async {
     bool first = await SharedPreference.first;
     // return first;
-    return false;
+    return true;
   }
 
   @override
@@ -75,29 +75,42 @@ class _IntroState extends State<Intro> {
           ),
         ),
       ),
-      globalFooter: SizedBox(
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          child: const Text(
-            'Let\s go right away!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-          onPressed: () => _onIntroEnd(context),
-        ),
-      ),
       pages: [
         PageViewModel(
           title: "Welcome to Pegasus",
           body: "Fly with Safety",
           decoration: pageDecoration,
+          image: SizedBox(
+            height: 80.0,
+            child: Image.asset(
+              "assets/images/loc.png",
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
         PageViewModel(
           title: "About",
-          body:
-              "Pegasus is a robust app that detects obstacles along your path, "
-              "alerts upcoming obstacles, and ensure your safety.",
           decoration: pageDecoration,
+          bodyWidget: Center(
+            child: Text(
+                "Pegasus, the driver assistance, is a cross-platform mobile application "
+                    "to ensure the safety of passengers during a journey. Pegasus provides a "
+                    "simple, intuitive and robust user interface powered by a durable and scalable backend. \n\n"
+                "Pegasus keeps track of the obstacles faced by the clients while travelling, such "
+                    "as potholes, speed-breakers, etc. It uses this information gained to facilita"
+                    "te safe travel for all other clients. Pegasus constantly monitors the mobile s"
+                    "ensors and efficiently detects the obstacles using the same. Then the detected "
+                    "coordinates are marks and sent to the database, where all the clients travelling"
+                    "coordinates are marks and sent to the database, where all the clients travelling"
+                    " along the path of the detected obstacle will be informed about the obstacle. \n\n"
+            "The real-time updates and efficient marking of "
+                    "obstacles make Pegasus a superior choice for drivers as it "
+                    "gives warning of the hidden obstacles ahead.",
+              style: TextStyle(
+                fontSize: 17.0
+              ),
+            ),
+          )
         ),
         PageViewModel(
           title: "Login/Register.",

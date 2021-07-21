@@ -25,7 +25,7 @@ class Auth {
     map['password1'] = password;
     map['password2'] = password;
     Response response = await post(url, body: map);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return true;
     }
     return false;

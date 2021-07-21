@@ -34,7 +34,8 @@ class _LoginState extends State<Login> {
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
           border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))
+      ),
     );
     final loginButon = Material(
       elevation: 5.0,
@@ -61,6 +62,11 @@ class _LoginState extends State<Login> {
                 ),
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              SharedPreference.setFirst();
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Home()),
+              );
             }
           } else {
             response = await Auth.login(email, password);
@@ -84,7 +90,7 @@ class _LoginState extends State<Login> {
             }
           }
         },
-        child: Text("Login",
+        child: Text(this.toRegister ? "Register" : "Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
                 color: Colors.white, fontWeight: FontWeight.bold)),
@@ -119,7 +125,7 @@ class _LoginState extends State<Login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("First time"),
+                      Text("Register"),
                       Checkbox(
                         value: this.toRegister,
                         onChanged: (bool value) {
