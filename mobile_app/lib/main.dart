@@ -18,7 +18,8 @@ class _MyAppState extends State<MyApp> {
   Future<bool> firstInfo() async {
     bool first = await SharedPreference.first;
     // return first;
-    return true;
+    // return true;
+    return false;
   }
 
   @override
@@ -97,9 +98,9 @@ class _IntroState extends State<Intro> {
                     "to ensure the safety of passengers during a journey. Pegasus provides a "
                     "simple, intuitive and robust user interface powered by a durable and scalable backend. \n\n"
                 "Pegasus keeps track of the obstacles faced by the clients while travelling, such "
-                    "as potholes, speed-breakers, etc. It uses this information gained to facilita"
-                    "te safe travel for all other clients. Pegasus constantly monitors the mobile s"
-                    "ensors and efficiently detects the obstacles using the same. Then the detected "
+                    "as potholes, speed-breakers, etc. It uses this information gained to facilitate"
+                    "safe travel for all other clients. Pegasus constantly monitors the mobile"
+                    "sensors and efficiently detects the obstacles using the same. Then the detected "
                     "coordinates are marks and sent to the database, where all the clients travelling"
                     "coordinates are marks and sent to the database, where all the clients travelling"
                     " along the path of the detected obstacle will be informed about the obstacle. \n\n"

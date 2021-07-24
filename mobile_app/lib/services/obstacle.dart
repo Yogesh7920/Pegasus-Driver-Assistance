@@ -38,9 +38,9 @@ class Obstacles {
 
   double calcDev(Vector3 acc, Vector3 userAcc) {
     // Jerk along the axis of gravity (For speed-beakers and potholes ).
-    double dot = acc.dot(userAcc);
-    double mag = acc.distanceTo(Vector3.zero());
-    double deviation = dot / mag;
+
+    Vector3 temp = Vector3(acc[0], acc[1], acc[2] - 9.81);
+    double deviation = temp.distanceTo(Vector3.zero());
     return deviation;
   }
 
