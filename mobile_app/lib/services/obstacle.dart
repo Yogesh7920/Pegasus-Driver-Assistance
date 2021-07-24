@@ -36,7 +36,7 @@ class Obstacles {
         0); // 'reduce' only for testing signal.
   }
 
-  double calcDev(Vector3 acc, Vector3 userAcc) {
+  double calcDev(Vector3 acc) {
     // Jerk along the axis of gravity (For speed-beakers and potholes ).
 
     Vector3 temp = Vector3(acc[0], acc[1], acc[2] - 9.81);
@@ -48,7 +48,7 @@ class Obstacles {
     // Sampling over a range of values
     List<double> deviations = [];
     values.forEach((element) {
-      double deviation = calcDev(element[0], element[1]);
+      double deviation = calcDev(element);
       deviations.add(deviation);
     });
     return deviations;
@@ -95,11 +95,8 @@ class Obstacles {
   Obstacles() {
     // ignore: close_sinks
     BehaviorSubject<Vector3> accelerometer = sensor.accelerometer;
-    // ignore: close_sinks
-    BehaviorSubject<Vector3> userAccelerometer = sensor.userAccelerometer;
     accelerometer.stream
         .map(reorient)
-        .zipWith(userAccelerometer.stream, (t, s) => [t, s])
         .bufferTime(Duration(seconds: Config.samplingRate))
         .listen((event) {
       rule(event);
